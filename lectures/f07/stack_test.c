@@ -5,7 +5,7 @@ void test_stack_creation()
 {
   stack_t *s = ioopm_stack_create(10);
 
-  CU_ASSERT_FALSE(s == NULL);
+  CU_ASSERT_FALSE_FATAL(s == NULL);
   CU_ASSERT_TRUE(ioopm_stack_size(s) == 0);
 
   ioopm_stack_destroy(s); 
@@ -40,8 +40,8 @@ void test_stack_push_pop()
 
   for (int i = 0; i < sizeof(values) / sizeof(int); ++i)
     {
-      CU_ASSERT_TRUE(ioopm_stack_top(s) == values[i]);
-      ioopm_stack_pop(s);
+      CU_ASSERT_EQUAL(ioopm_stack_top(s), values[i]);
+      CU_ASSERT_TRUE(ioopm_stack_pop(s));
     }
     
   ioopm_stack_destroy(s); 

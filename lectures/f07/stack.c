@@ -5,7 +5,7 @@
 
 stack_t *ioopm_stack_create(int maxsize)
 {
-  stack_t *result = malloc((2+maxsize)*sizeof(int));
+  stack_t *result = malloc(sizeof(stack_t)+maxsize*sizeof(int));
   if (result)
     {
       *result = (stack_t) { .height = 0, .maxsize = maxsize };
